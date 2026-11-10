@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Communications Portfolio — Will Clegg</title>
+<style>
+:root {
+  --bg: #f5f2ee;
+  --bg-card: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #5a5550;
+  --accent: #c4362c;
+  --border: #e0dbd5;
+  --tag-bg: #eae6e0;
+  --tag-text: #6b6560;
+  --hero-bg: #1c2028;
+  --hero-text: #f0ece6;
+  --hero-sub: #a8a29e;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141618; --bg-card: #1e2024; --text: #e8e4de; --text-secondary: #9a958e;
+    --accent: #e05a50; --border: #2e3038; --tag-bg: #2a2c32; --tag-text: #9a958e;
+    --hero-bg: #0c0e12; --hero-text: #e8e4de; --hero-sub: #78736c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141618; --bg-card: #1e2024; --text: #e8e4de; --text-secondary: #9a958e;
+  --accent: #e05a50; --border: #2e3038; --tag-bg: #2a2c32; --tag-text: #9a958e;
+  --hero-bg: #0c0e12; --hero-text: #e8e4de; --hero-sub: #78736c; color-scheme: dark;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+.hero {
+  background: var(--hero-bg); color: var(--hero-text);
+  padding: 80px 24px 72px; text-align: center;
+}
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 400;
+  letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance; margin-bottom: 16px;
+}
+.hero .subtitle { font-size: 1.05rem; color: var(--hero-sub); max-width: 560px; margin: 0 auto 28px; }
+.hero .contact {
+  font-size: 0.88rem; color: var(--hero-sub);
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px;
+}
+.hero .contact a { color: var(--hero-sub); text-decoration: none; }
+.hero .contact a:hover { color: var(--hero-text); }
+.intro { max-width: 680px; margin: 0 auto; padding: 56px 24px 40px; font-size: 1.02rem; color: var(--text-secondary); }
+.intro p + p { margin-top: 12px; }
+
+/* Section headings */
+.section-heading {
+  max-width: 1100px; margin: 0 auto; padding: 48px 24px 16px;
+}
+.section-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem; font-weight: 400; color: var(--text);
+}
+.section-heading .section-sub {
+  font-size: 0.92rem; color: var(--text-secondary); margin-top: 4px;
+}
+.section-heading .section-rule {
+  width: 48px; height: 2px; background: var(--accent); margin-top: 12px; border-radius: 1px;
+}
+
+/* Featured client cards — same as game cards but with square logo */
+.clients { max-width: 1100px; margin: 0 auto; padding: 0 24px 24px; display: flex; flex-direction: column; gap: 40px; }
+.client {
+  display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: start;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+}
+.client-logo { width: 100%; border-radius: 8px; overflow: hidden; background: var(--tag-bg); aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; }
+.client-logo img { width: 100%; height: 100%; display: block; object-fit: contain; padding: 12px; }
+.client-info h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.4rem; font-weight: 400; line-height: 1.25; margin-bottom: 10px;
+}
+.client-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.tag {
+  display: inline-block; background: var(--tag-bg); color: var(--tag-text);
+  font-size: 0.78rem; font-weight: 500; padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+}
+.client-info .description { font-size: 0.94rem; color: var(--text-secondary); margin-bottom: 14px; }
+.client-info .credits { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; }
+.credits strong { color: var(--text); font-weight: 500; }
+.credits a { color: var(--accent); text-decoration: none; }
+.credits a:hover { text-decoration: underline; }
+.highlights { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 0.84rem; color: var(--text-secondary); }
+.highlights .label { font-weight: 600; color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+
+/* Employer / agency banner */
+.employer-banner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+}
+.employer-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 28px 32px; margin-bottom: 8px;
+}
+.employer-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.3rem; font-weight: 400; margin-bottom: 6px;
+}
+.employer-card .role { font-size: 0.95rem; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
+.employer-card .employer-desc { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; }
+.employer-card .employer-desc ul { margin-top: 8px; padding-left: 20px; }
+.employer-card .employer-desc li { margin-bottom: 4px; }
+
+/* Client list (compact) — for iMpact roster and agency work */
+.client-list-section {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px 24px;
+}
+.client-list-group {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 24px 28px; margin-bottom: 16px;
+}
+.client-list-group h4 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem; font-weight: 400; color: var(--text); margin-bottom: 12px;
+}
+.client-list {
+  list-style: none; padding: 0;
+}
+.client-list li {
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.92rem; color: var(--text-secondary); line-height: 1.55;
+}
+.client-list li:last-child { border-bottom: none; }
+.client-list .client-name {
+  font-weight: 500; color: var(--text);
+}
+.client-list .client-work {
+  display: block; margin-top: 2px;
+}
+
+.footer { text-align: center; padding: 40px 24px; font-size: 0.84rem; color: var(--text-secondary); border-top: 1px solid var(--border); }
+.footer a { color: var(--accent); text-decoration: none; }
+
+@media print {
+  .hero { background: #1c2028 !important; color: #f0ece6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .hero .subtitle, .hero .contact, .hero .contact a { color: #a8a29e !important; }
+  .client { break-inside: avoid; page-break-inside: avoid; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+@media (max-width: 700px) {
+  .client { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+  .client-logo { max-width: 140px; }
+  .hero { padding: 56px 20px 48px; }
+  .intro { padding: 40px 20px 28px; }
+  .clients { padding: 0 16px 24px; gap: 32px; }
+  .section-heading { padding: 40px 16px 12px; }
+  .employer-banner { padding: 0 16px; }
+  .client-list-section { padding: 0 16px 24px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Brand Communications Portfolio</h1>
+  <p class="subtitle">Chinese&ndash;English brand communications, marketing transcreation, PR writing, and website localisation for consumer, technology, and corporate clients.</p>
+  <div class="contact">
+    <span>Will Clegg</span>
+    <span>Chinese to English</span>
+    <span>WeChat: +86 186215 37176</span>
+    <span>WhatsApp: +44 7436 899599</span>
+    <a href="https://www.linkedin.com/in/william-clegg-629455a0/">LinkedIn</a>
+  </div>
+</header>
+
+<section class="intro">
+  <p>Selected brand communications, marketing, and PR work from over a decade of professional Chinese-to-English translation, transcreation, and editorial experience. My work spans website localisation, press releases, campaign copy, corporate communications, and UI localisation for consumer and technology brands operating in or from China.</p>
+</section>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED CLIENTS                           -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section-heading">
+  <h2>Featured Clients</h2>
+  <p class="section-sub">Brands where I delivered significant, identifiable work.</p>
+  <div class="section-rule"></div>
+</div>
+
+<section class="clients">
+
+  <!-- Tims China -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/tims-china.png" alt="Tims China logo">
+    </div>
+    <div class="client-info">
+      <h3>Tims China (Tim Hortons China)</h3>
+      <div class="client-meta">
+        <span class="tag">Website Localisation</span>
+        <span class="tag">Marketing Transcreation</span>
+        <span class="tag">Press Releases</span>
+      </div>
+      <p class="description">Wrote the entire English version of the Tims China website from scratch, building a complete English brand voice for one of China's most recognisable F&amp;B names. Also produced marketing campaign transcreation, press releases, and internal documentation.</p>
+      <div class="credits">
+        <strong>Scope:</strong> Full website + all English promotional materials<br>
+        <strong>Role:</strong> Translator / Copywriter<br>
+        <strong>Live site:</strong> <a href="https://www.timschina.com/en/home/index" target="_blank">timschina.com</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- TikTok -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/tiktok.png" alt="TikTok logo">
+    </div>
+    <div class="client-info">
+      <h3>TikTok / TikTok Shop</h3>
+      <div class="client-meta">
+        <span class="tag">UI Localisation</span>
+        <span class="tag">Marketing Content</span>
+        <span class="tag">E-commerce UX</span>
+      </div>
+      <p class="description">Two distinct engagements with TikTok. First, localisation editing for the TikTok Ads Platform UI and marketing content (2020&ndash;2022), covering ad creation flows, campaign tools, and dashboard elements. Then, content design for TikTok Shop's localisation team (2025&ndash;2026), producing and refining English-language UI copy with a focus on brand voice consistency and e-commerce user experience.</p>
+      <div class="credits">
+        <strong>Scope:</strong> Ads Platform UI, marketing content, TikTok Shop UX copy<br>
+        <strong>Role:</strong> Localisation Editor / Content Designer
+      </div>
+    </div>
+  </article>
+
+  <!-- Marriott Hotels China -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/marriott.png" alt="Marriott Hotels logo">
+    </div>
+    <div class="client-info">
+      <h3>Marriott Hotels China</h3>
+      <div class="client-meta">
+        <span class="tag">Marketing Transcreation</span>
+        <span class="tag">Press Releases</span>
+      </div>
+      <p class="description">Marketing transcreation and press release production for Marriott Hotels China, adapting Chinese-language campaigns and communications for international audiences.</p>
+      <div class="credits">
+        <strong>Via:</strong> Kiwi Communications<br>
+        <strong>Role:</strong> Transcreation / Translation
+      </div>
+    </div>
+  </article>
+
+  <!-- Universal Studios Beijing -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/universal-beijing.png" alt="Universal Studios Beijing logo">
+    </div>
+    <div class="client-info">
+      <h3>Universal Studios Resort Beijing</h3>
+      <div class="client-meta">
+        <span class="tag">Marketing Transcreation</span>
+        <span class="tag">Press Releases</span>
+      </div>
+      <p class="description">Marketing campaign transcreation and press release production for Universal Studios Resort Beijing, ensuring brand-appropriate English messaging for international media and audiences.</p>
+      <div class="credits">
+        <strong>Via:</strong> Kiwi Communications<br>
+        <strong>Role:</strong> Transcreation / Translation
+      </div>
+    </div>
+  </article>
+
+  <!-- HeyTea -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/heytea.png" alt="HeyTea logo">
+    </div>
+    <div class="client-info">
+      <h3>HeyTea</h3>
+      <div class="client-meta">
+        <span class="tag">Marketing Transcreation</span>
+        <span class="tag">Press Releases</span>
+      </div>
+      <p class="description">Campaign transcreation and press release production for HeyTea, one of China's most prominent consumer beverage brands, adapting marketing materials and brand communications for English-speaking audiences.</p>
+      <div class="credits">
+        <strong>Role:</strong> Transcreation / Translation
+      </div>
+    </div>
+  </article>
+
+  <!-- Midea -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/midea.png" alt="Midea logo">
+    </div>
+    <div class="client-info">
+      <h3>Midea</h3>
+      <div class="client-meta">
+        <span class="tag">PR Campaign</span>
+        <span class="tag">Press Releases</span>
+        <span class="tag">IFA 2026</span>
+      </div>
+      <p class="description">Multi-deliverable PR campaign for Midea's IFA 2026 presence, plus a press release for Midea Building Technologies' OCP Global Summit appearance. Campaign materials included press releases, pitch letters, and media briefing content.</p>
+      <div class="credits">
+        <strong>Via:</strong> iMpact Consulting<br>
+        <strong>Role:</strong> PR Writing / Editing
+      </div>
+    </div>
+  </article>
+
+  <!-- Kimi AI -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/kimi-ai.png" alt="Kimi AI logo">
+    </div>
+    <div class="client-info">
+      <h3>Kimi AI / Moonshot AI</h3>
+      <div class="client-meta">
+        <span class="tag">UI Localisation</span>
+        <span class="tag">Mobile / Web / Backend</span>
+        <span class="tag">QA</span>
+      </div>
+      <p class="description">Large-scale UI localisation project for Kimi, Moonshot AI's conversational AI platform. Work covered mobile, web, and backend interfaces across multiple QA rounds, ensuring consistent English-language UX across the full product.</p>
+      <div class="credits">
+        <strong>Via:</strong> Eurasia CSOFT<br>
+        <strong>Role:</strong> Localisation / QA
+      </div>
+    </div>
+  </article>
+
+  <!-- Inside China Journeys -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/inside-china.png" alt="Inside China Journeys logo">
+    </div>
+    <div class="client-info">
+      <h3>Inside China Journeys</h3>
+      <div class="client-meta">
+        <span class="tag">Website Localisation</span>
+        <span class="tag">English Copy</span>
+        <span class="tag">Content Strategy</span>
+      </div>
+      <p class="description">Localised and wrote English website copy for a China inbound travel brand, making China feel approachable and clear for international visitors. Currently advising on English content, social media, and cross-cultural communications strategy as Consultant for Overseas English Operations.</p>
+      <div class="credits">
+        <strong>Role:</strong> Localisation / Content Consultant<br>
+        <strong>Live site:</strong> <a href="https://goinsidechina.com/" target="_blank">goinsidechina.com</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- CEIBS -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/ceibs.png" alt="CEIBS logo">
+    </div>
+    <div class="client-info">
+      <h3>CEIBS / Harvard Business Publishing</h3>
+      <div class="client-meta">
+        <span class="tag">Academic Translation</span>
+        <span class="tag">Editorial</span>
+        <span class="tag">Website</span>
+      </div>
+      <p class="description">Translation and editing of over 100 MBA case studies for China Europe International Business School, all published to Harvard Business Publishing's online store. Also translated the full CEIBS Case Center website (chinacases.org) and edited marketing materials and event content during a full-time Senior Editor role (2020&ndash;2022). Ongoing freelance deep editing of case studies.</p>
+      <div class="credits">
+        <strong>Scope:</strong> 100+ case studies, website, marketing materials<br>
+        <strong>Role:</strong> Senior Editor (in-house) / Freelance Editor
+      </div>
+    </div>
+  </article>
+
+  <!-- TechNode -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/technode.png" alt="TechNode logo">
+    </div>
+    <div class="client-info">
+      <h3>TechNode</h3>
+      <div class="client-meta">
+        <span class="tag">Senior Editor</span>
+        <span class="tag">Social Media</span>
+        <span class="tag">Video Content</span>
+      </div>
+      <p class="description">Led content development for China's top English-language tech news outlet. Managed editorial processes across written, audio, and visual content. Ran the English-language social media strategy and co-produced video content, including a piece that surpassed 100,000 views.</p>
+      <div class="credits">
+        <strong>Role:</strong> Senior Editor (in-house, 2019&ndash;2020)
+      </div>
+    </div>
+  </article>
+
+  <!-- Yicai Global -->
+  <article class="client">
+    <div class="client-logo">
+      <img src="img/yicai.png" alt="Yicai Global logo">
+    </div>
+    <div class="client-info">
+      <h3>Yicai Global</h3>
+      <div class="client-meta">
+        <span class="tag">Editor</span>
+        <span class="tag">Content Development</span>
+        <span class="tag">Training</span>
+      </div>
+      <p class="description">Edited and developed content for China's leading English-language financial media outlet. Trained translators and editors, and managed English-language social publishing for international audiences.</p>
+      <div class="credits">
+        <strong>Role:</strong> Editor (in-house)
+      </div>
+    </div>
+  </article>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- IMPACT CONSULTING                          -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section-heading">
+  <h2>iMpact Consulting</h2>
+  <p class="section-sub">Ongoing PR and communications work for Chinese technology and consumer brands entering international markets.</p>
+  <div class="section-rule"></div>
+</div>
+
+<div class="employer-banner">
+  <div class="employer-card">
+    <h3>iMpact Consulting (&#32654;&#35759; / AEI)</h3>
+    <div class="role">Account Executive &rarr; Freelance PR Writer / Editor</div>
+    <div class="employer-desc">
+      <p>Producing and editing English-language press relations materials for Chinese technology and consumer brands: press releases, media briefings, pitch letters, award applications, and campaign content. Work spans consumer electronics, robotics, AI, clean energy, and lifestyle brands.</p>
+    </div>
+  </div>
+</div>
+
+<div class="client-list-section">
+
+  <div class="client-list-group">
+    <h4>Consumer Electronics &amp; Smart Home</h4>
+    <ul class="client-list">
+      <li><span class="client-name">Midea</span><span class="client-work">IFA 2026 multi-deliverable PR campaign; Midea Building Technologies OCP Global Summit press release</span></li>
+      <li><span class="client-name">Rokid</span><span class="client-work">Award applications (TIME Best Inventions, Golden Pin, Good Design Japan/Korea, VivaTech), PR writing, product descriptions</span></li>
+      <li><span class="client-name">INMO AI</span><span class="client-work">IFA Innovation Awards application, Techlicious submission, product description, press release</span></li>
+      <li><span class="client-name">Ascentiz</span><span class="client-work">IFA press release, retainer editorial, claim verification</span></li>
+      <li><span class="client-name">Olight</span><span class="client-work">Black Friday landing page and marketing copy polish/rewrite</span></li>
+      <li><span class="client-name">NAVEE</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">ugee Funbox</span><span class="client-work">PR and communications</span></li>
+    </ul>
+  </div>
+
+  <div class="client-list-group">
+    <h4>AI &amp; Robotics</h4>
+    <ul class="client-list">
+      <li><span class="client-name">Tripo AI / VAST</span><span class="client-work">Press release, four segmented pitch letter templates</span></li>
+      <li><span class="client-name">Simple AI / HiFi-UMI</span><span class="client-work">Full media launch: press release, three pitch letter lanes, WRC 2026 outreach</span></li>
+      <li><span class="client-name">KEENON Robotics</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">RoboSense</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">Converge AI</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">AngelEye (&#32918;&#35266;&#30005;&#23376;)</span><span class="client-work">AI-powered visual technology brand localisation</span></li>
+    </ul>
+  </div>
+
+  <div class="client-list-group">
+    <h4>Energy, Industry &amp; Investment</h4>
+    <ul class="client-list">
+      <li><span class="client-name">Autel Energy</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">GCL Energy Technology</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">Sahm Capital</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">Zoomlion / Z-Valley</span><span class="client-work">CN-EN media interview translation and editing</span></li>
+    </ul>
+  </div>
+
+  <div class="client-list-group">
+    <h4>Health, Consumer &amp; Lifestyle</h4>
+    <ul class="client-list">
+      <li><span class="client-name">Thyseed</span><span class="client-work">US market media factsheet, brand positioning, JAMA study framing</span></li>
+      <li><span class="client-name">HeyGears G1 Series</span><span class="client-work">Pitch letter suite, editorial polish on media placement articles</span></li>
+      <li><span class="client-name">Nori / Domus Next</span><span class="client-work">CES Innovation Awards 2027 application</span></li>
+      <li><span class="client-name">TENNIIX (Enhanced Robotics)</span><span class="client-work">Pitch letter polish for Black Friday/holiday outreach</span></li>
+      <li><span class="client-name">CasaJoy (&#27426;&#20048;&#23478;)</span><span class="client-work">VI guidelines translation for international expansion</span></li>
+      <li><span class="client-name">Human Longevity Inc.</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">Nooklab</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">VEVOR</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">Xbrew</span><span class="client-work">PR and communications</span></li>
+      <li><span class="client-name">Realsee</span><span class="client-work">PR and communications</span></li>
+    </ul>
+  </div>
+
+  <div class="client-list-group">
+    <h4>PR Retainers &amp; Campaigns</h4>
+    <ul class="client-list">
+      <li><span class="client-name">Xnurta</span><span class="client-work">Three-month PR retainer: earned placements, Substack thought leadership, press releases, awards programme (AM lead)</span></li>
+      <li><span class="client-name">Fotor</span><span class="client-work">Two rounds of pitch letters, media outreach strategy</span></li>
+    </ul>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- OTHER BRAND COMMUNICATIONS WORK            -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section-heading">
+  <h2>Other Brand Communications Work</h2>
+  <p class="section-sub">Agency-routed translation, transcreation, and corporate communications projects.</p>
+  <div class="section-rule"></div>
+</div>
+
+<div class="client-list-section">
+
+  <div class="client-list-group">
+    <h4>PR &amp; Press</h4>
+    <ul class="client-list">
+      <li><span class="client-name">Kiwi Communications</span><span class="client-work">Marketing transcreation and press releases for Marriott Hotels China and Universal Studios Resort Beijing</span></li>
+      <li><span class="client-name">PR Newswire</span><span class="client-work">Press release transcreation (CN&gt;EN) for multiple consumer-facing companies</span></li>
+      <li><span class="client-name">PR NW</span><span class="client-work">Freelance PR writing</span></li>
+    </ul>
+  </div>
+
+  <div class="client-list-group">
+    <h4>Marketing &amp; Corporate Transcreation</h4>
+    <ul class="client-list">
+      <li><span class="client-name">Messe D&uuml;sseldorf China</span><span class="client-work">Marketing campaign transcreation and press releases</span></li>
+      <li><span class="client-name">Eastern Bell Capital</span><span class="client-work">Full website translation, transcreation of funding documentation and press releases</span></li>
+      <li><span class="client-name">International Finance Forum</span><span class="client-work">Translation of promotional materials and reports</span></li>
+      <li><span class="client-name">Canaria Linguitronics</span><span class="client-work">Long-term freelance English copywriting for medical, textile, and industrial electronics clients (CN&gt;EN)</span></li>
+    </ul>
+  </div>
+
+  <div class="client-list-group">
+    <h4>Agency-Routed Translation</h4>
+    <ul class="client-list">
+      <li><span class="client-name">CSoft / Eurasia CSOFT</span><span class="client-work">Translation and transcreation of marketing and corporate communications for global brands in the Chinese market</span></li>
+      <li><span class="client-name">Taika Translation</span><span class="client-work">CN&gt;EN translation and editing for corporate communications, marketing campaigns, and promotional materials</span></li>
+      <li><span class="client-name">Centific</span><span class="client-work">Linguistic services including translation, editing, and evaluation of AI-generated content for technology and digital platform clients</span></li>
+    </ul>
+  </div>
+
+  <div class="client-list-group">
+    <h4>Market Intelligence</h4>
+    <ul class="client-list">
+      <li><span class="client-name">M-Brain</span><span class="client-work">Market intelligence reports and analysis for Fortune 500 clients across ports, gas turbines, and defence sectors</span></li>
+    </ul>
+  </div>
+
+  <div class="client-list-group">
+    <h4>Linguistic AI</h4>
+    <ul class="client-list">
+      <li><span class="client-name">DeepL</span><span class="client-work">Linguistic annotation and structural analysis supporting translation AI development</span></li>
+    </ul>
+  </div>
+
+</div>
+
+
+<footer class="footer">
+  <p>&copy; 2024 Will Clegg &middot; <a href="mailto:clegg.w2019@gmail.com">Contact</a></p>
+</footer>
+
+</body>
+</html>
